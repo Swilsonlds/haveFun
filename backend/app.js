@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000; // Use environment variable or default to 3000
+const PORT = process.env.PORT || 3000;
 
-// Define a basic route
-app.get('/', (req, res) => {
-  res.send('<h1>Hello from your Express Server!</h1>');
-});
+// Middleware to parse JSON
+app.use(express.json());
 
-// Start the server
+// Import routes
+const routes = require('./routes');
+app.use('/', routes);
+
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
