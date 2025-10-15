@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Connect to MongoDB
+require('./models/db');
+
 // Middleware to parse JSON
 app.use(express.json());
 
